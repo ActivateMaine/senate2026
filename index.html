@@ -1,3 +1,11 @@
+
+senate-page-v3.txt
+
+Page
+1
+/
+1
+100%
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,6 +192,13 @@
 
   /* ===== Comparison table ===== */
   .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .swipe-hint{display:none;}
+  @media (max-width:700px){
+    .swipe-hint{
+      display:block; font-size:12px; color:var(--teal-deep); font-weight:600;
+      margin:0 0 8px; font-family:'JetBrains Mono', monospace;
+    }
+  }
   table{
     width:100%; border-collapse:collapse; font-size:13px; min-width:640px;
     background:#fff;
@@ -195,10 +210,15 @@
     background:var(--navy); color:var(--cream);
     font-family:'JetBrains Mono', monospace; font-size:12px;
     text-transform:uppercase; letter-spacing:0.04em; font-weight:500;
+    position:sticky; top:46px; z-index:3;
+  }
+  thead th:first-child{
+    left:0; z-index:4;
   }
   tbody th{
     background:var(--cream-warm); font-weight:700; color:var(--navy);
     white-space:nowrap;
+    position:sticky; left:0; z-index:2;
   }
   tbody tr:nth-child(even) td{background:#fbfaf5;}
   td.hidden-c, th.hidden-c{display:none;}
@@ -214,6 +234,44 @@
   @media (max-width:600px){
     .issue-grid{grid-template-columns:1fr;}
     .issue-grid dt{margin-top:8px;}
+
+    header.masthead{padding:36px 0 28px;}
+    h1{font-size:28px;}
+    header.masthead p.lede{font-size:15.5px;}
+    .status-strip{font-size:13.5px; padding:12px 14px;}
+
+    nav.jump ul{padding:8px 14px; gap:0;}
+    nav.jump a{font-size:12.5px; padding:6px 8px;}
+
+    section{padding:30px 0;}
+    .wrap{padding:0 16px;}
+    h2{font-size:22px;}
+    .section-sub{font-size:13.5px;}
+
+    .fact-grid{grid-template-columns:1fr 1fr; gap:10px;}
+    .fact-card{padding:10px 12px;}
+    .fact-card .num{font-size:21px;}
+    .fact-card .label{font-size:11.5px;}
+    .convention-box{padding:16px 16px;}
+
+    .picker{gap:6px;}
+    .chip{font-size:13px; padding:9px 12px 9px 8px; min-height:36px;}
+    .chip input{width:18px; height:18px;}
+    .picker-actions{width:100%; margin-left:0; margin-top:4px;}
+    .picker-actions button{flex:1; padding:8px 10px; min-height:36px;}
+
+    .candidate-head{padding:16px 16px 12px;}
+    .candidate-head h3{font-size:19px;}
+    .candidate-body{padding:14px 16px 18px;}
+    .candidate-body p{font-size:14.5px;}
+
+    table{font-size:12.5px;}
+    th, td{padding:9px 10px;}
+    thead th{top:0; font-size:11px;}
+  }
+
+  @media (max-width:420px){
+    .fact-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -242,31 +300,32 @@
 
   <section id="convention">
     <h2>How the replacement gets picked</h2>
-    <p class="section-sub">Maine has never done this before at this scale — here's what's actually been decided so far.</p>
+    <p class="section-sub">Maine has never done this before at this scale — here's what's actually been confirmed so far.</p>
     <div class="convention-box">
       <h3>A first-of-its-kind nominating convention</h3>
-      <p style="font-size:15px; margin:0 0 6px;">The Maine Democratic Party's state committee voted to hold a nominating convention to select a new U.S. Senate nominee, rather than have party leaders simply appoint one. This is the first time Maine Democrats have used a convention of this scale to replace a statewide nominee.</p>
+      <p style="font-size:15px; margin:0 0 6px;">The Maine Democratic Party will hold a one-day nominating convention on <b>Saturday, July 25</b>, at the <b>Cross Insurance Center in Bangor</b>, starting at 9 a.m. It's the first time Maine Democrats have used a convention at this scale to replace a statewide nominee, rather than a traditional primary.</p>
       <div class="fact-grid">
         <div class="fact-card">
           <span class="num">500</span>
           <span class="label">delegates elected proportionally by county committees</span>
         </div>
         <div class="fact-card">
-          <span class="num">~100+</span>
-          <span class="label">additional votes from the party's full state committee</span>
+          <span class="num">~100</span>
+          <span class="label">additional votes from the party's state committee</span>
         </div>
         <div class="fact-card">
-          <span class="num">~600</span>
-          <span class="label">total people expected to select the nominee</span>
+          <span class="num">601</span>
+          <span class="label">total voting delegates at the convention</span>
         </div>
       </div>
-      <p style="font-size:14px; color:#41504c; margin:16px 0 0;">Party leadership — Chair Charlie Dingman, Vice Chair Imke Schessler, and Executive Director Devon Murphy-Anderson — has said it will release a full timeline, candidate requirements, and details on how the public can participate, promising "transparency is of the utmost importance" throughout the process. Maine law requires a replacement nominee to be certified by <b>July 27, 2026</b>.</p>
+      <p style="font-size:14px; color:#41504c; margin:16px 0 0;">To get on the ballot at the convention, candidates must file a <b>Declaration of Intent</b> with the party chair by <b>5 p.m. on July 15</b> — including a headshot, a 150-word statement of intent, and a 300-word statement on their vision — then submit at least <b>500 valid signatures from registered Democrats</b> (with a minimum of 50 from each of at least 8 counties) by <b>11:59 p.m. on July 21</b>. Only Mainers registered as Democrats as of the June 9 primary can serve as delegates.</p>
+      <p style="font-size:14px; color:#41504c; margin:10px 0 0;"><b>How the vote works:</b> all certified candidates appear on the first ballot. The top 5 vote-getters advance to a second round; after that, the last-place finisher is eliminated each round until one candidate wins a majority. Delegates arrive unpledged — free to decide after hearing candidates speak at the convention, which will be livestreamed. Maine law requires a replacement nominee to be certified by <b>July 27, 2026</b>.</p>
     </div>
   </section>
 
   <section id="candidates">
     <h2>The candidates</h2>
-    <p class="section-sub">Eight Democrats have declared as of July 10. Use the picker below to narrow the list, or scroll straight to the issue comparison.</p>
+    <p class="section-sub">Nine Democrats have launched campaigns as of July 11. The list won't be final until the July 15 filing deadline — some names here may not end up qualifying, and others could still join. Use the picker below to narrow the list, or scroll straight to the issue comparison.</p>
 
     <div class="picker" id="picker">
       <span class="picker-label">Show:</span>
@@ -278,6 +337,7 @@
       <label class="chip" data-for="wood"><input type="checkbox" checked data-c="wood"> Wood</label>
       <label class="chip" data-for="costello"><input type="checkbox" checked data-c="costello"> Costello</label>
       <label class="chip" data-for="loud"><input type="checkbox" checked data-c="loud"> Loud</label>
+      <label class="chip" data-for="laflamme"><input type="checkbox" checked data-c="laflamme"> LaFlamme</label>
       <div class="picker-actions">
         <button type="button">All</button>
         <button type="button">None</button>
@@ -352,7 +412,6 @@
           <dt>Framing</dt><dd>"Sick and tired of a system that's been rigged by corporate interests" — leaning into anti-establishment, anti-Washington-insider, anti-"New York City consultant" messaging. Says his focus is "practical policies, not just outrage."</dd>
           <dt>Economy / affordability</dt><dd>Campaign centers on cost-of-living relief — housing, health care, groceries, electric bills — which he argues Collins has stopped prioritizing after nearly 30 years in office.</dd>
           <dt>Labor practices (business record)</dt><dd>Built Maine Beer Company around paying living wages, covering full employee health care, offering retirement benefits, and donating 1% of gross sales to climate/conservation nonprofits — a record he points to as a preview of his priorities.</dd>
-          <dt>Foreign policy</dt><dd>Opposes disarming Israel; says it "has a right to defend itself" and hasn't backed restricting arms sales, calling the Gaza situation an "absolute tragedy" without using the term genocide.</dd>
           <dt>Record</dt><dd>No voting record to scrutinize, for better or worse; his only prior campaign was the few weeks he spent running for this same seat in 2025.</dd>
         </dl>
       </div>
@@ -364,12 +423,11 @@
         <p class="role">Maine State Representative, Rockland · nurse, former mayor</p>
       </div>
       <div class="candidate-body">
-        <p>Geiger is serving her third term in the Maine House (Labor Committee; Energy, Utilities and Technology Committee), was Rockland's mayor for a year, and worked as a nurse and later a health-policy administrator before running for office.</p>
+        <p>Geiger is serving her third term in the Maine House (Labor Committee; Energy, Utilities and Technology Committee), was Rockland's mayor for a year, and worked as a nurse and later a health-policy administrator before running for office. Her candidacy status is less settled than others in this field — as of mid-July she'd expressed interest and been discussed as a contender but had not filed formal declaration paperwork.</p>
         <dl class="issue-grid">
           <dt>Healthcare</dt><dd>Nursing and hospice/health-administration background gives her a direct professional stake in the issue.</dd>
           <dt>Energy/climate</dt><dd>Built her own passive-solar, net-zero home; holds a master's in sustainable design; sits on the legislature's energy committee.</dd>
           <dt>Labor</dt><dd>Serves on the Maine House Labor Committee, giving her a working knowledge of state-level labor policy.</dd>
-          <dt>Foreign policy</dt><dd>Has not commented extensively; shared a social post in May criticizing Trump, Putin, and Netanyahu together, captioned "This! Just this!"</dd>
           <dt>Record</dt><dd>Six years on the Rockland City Council including a year as mayor, plus three terms in the Maine House — the most local-government experience in the field.</dd>
         </dl>
       </div>
@@ -430,7 +488,23 @@
       </div>
     </div>
 
-    <p style="font-size:13.5px; color:#4d5a56;">More names could still surface before candidate requirements are finalized for the convention.</p>
+    <div class="candidate" data-candidate="laflamme">
+      <div class="candidate-head">
+        <h3>Andrea LaFlamme</h3>
+        <p class="role">Public health professor · union chapter president</p>
+      </div>
+      <div class="candidate-body">
+        <p>LaFlamme was already running a write-in campaign for this seat before Platner's exit — she wasn't on the June primary ballot but campaigned anyway, including chalking a message about abortion rights outside Susan Collins' house in 2022. She teaches nutrition, health economics, and women's health at Maine community colleges and is the only candidate in the field who's an elected union leader — chapter president of MSEA-SEIU Local 1989, representing adjunct professors statewide. She was also the youngest-ever board president of the Mabel Wadsworth Center, a Bangor reproductive health clinic.</p>
+        <dl class="issue-grid">
+          <dt>Reproductive rights</dt><dd>Wants to restore Title X family-planning funding (unchanged since 2015), oppose reinstating the "domestic gag rule," and pass federal right-to-contraception legislation.</dd>
+          <dt>Labor</dt><dd>As union chapter president, recently secured 4% annual raises for adjunct professors; backs the Paycheck Fairness Act and a federal Raise the Wage Act.</dd>
+          <dt>Economy</dt><dd>Wants to close the gender pay gap through expanded caregiving tax credits and more progressive tax rates.</dd>
+          <dt>Record</dt><dd>No prior elected office outside her union role; frames her lack of a political résumé as a feature, arguing Congress needs more teachers and health professionals rather than lawyers.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <p style="font-size:13.5px; color:#4d5a56;">More names could still surface before the July 15 filing deadline.</p>
   </section>
 
   <section id="issues">
@@ -447,12 +521,14 @@
       <label class="chip" data-for="wood"><input type="checkbox" checked data-c="wood"> Wood</label>
       <label class="chip" data-for="costello"><input type="checkbox" checked data-c="costello"> Costello</label>
       <label class="chip" data-for="loud"><input type="checkbox" checked data-c="loud"> Loud</label>
+      <label class="chip" data-for="laflamme"><input type="checkbox" checked data-c="laflamme"> LaFlamme</label>
       <div class="picker-actions">
         <button type="button">All</button>
         <button type="button">None</button>
       </div>
     </div>
 
+    <p class="swipe-hint">Swipe sideways to see all candidates →</p>
     <div class="table-scroll">
       <table>
         <thead>
@@ -466,6 +542,7 @@
             <th data-candidate="wood">Wood</th>
             <th data-candidate="costello">Costello</th>
             <th data-candidate="loud">Loud</th>
+            <th data-candidate="laflamme">LaFlamme</th>
           </tr>
         </thead>
         <tbody>
@@ -479,6 +556,7 @@
             <td data-candidate="wood">Democracy/ethics reform — Citizens United, no PAC money, term limits.</td>
             <td data-candidate="costello">Structural democracy reform — filibuster, gerrymandering, term limits.</td>
             <td data-candidate="loud">Universal healthcare and small-dollar-only campaign finance.</td>
+            <td data-candidate="laflamme">Reproductive rights and Title X funding restoration; only elected union leader in the field.</td>
           </tr>
           <tr>
             <th>Healthcare</th>
@@ -490,6 +568,7 @@
             <td data-candidate="wood">Medicare for All (single-payer, keeps private option); public option, Medicare dental/vision/hearing, drug price negotiation.</td>
             <td data-candidate="costello">Names healthcare affordability as a priority; no detailed mechanism published yet.</td>
             <td data-candidate="loud">Universal healthcare as a human right — comprehensive coverage based on need, not wealth.</td>
+            <td data-candidate="laflamme">Not a detailed general-healthcare platform beyond reproductive care specifics; public health professor by training.</td>
           </tr>
           <tr>
             <th>Economy / cost of living</th>
@@ -501,6 +580,7 @@
             <td data-candidate="wood">1% tax rate on first $50,000 earned; Ultra-Millionaire Tax; $10/day childcare cap; no corporate PAC money.</td>
             <td data-candidate="costello">Names economic inequality as a "pressing problem"; specific fixes not yet detailed for this race.</td>
             <td data-candidate="loud">Raise/index minimum wage, tax wealthy and corporations, strengthen unions, refuses corporate PAC money.</td>
+            <td data-candidate="laflamme">Close the gender pay gap via expanded caregiving tax credits and more progressive tax rates; backs the Paycheck Fairness Act and a federal Raise the Wage Act.</td>
           </tr>
           <tr>
             <th>Housing</th>
@@ -512,6 +592,7 @@
             <td data-candidate="wood">Stop hedge funds buying single-family homes, ban algorithmic rent-fixing, anti-rent-gouging laws, defer property taxes for first-time buyers.</td>
             <td data-candidate="costello">Not yet detailed for this race.</td>
             <td data-candidate="loud">"Housing First" strategy; federal tax on corporate/private-equity ownership of single-family homes.</td>
+            <td data-candidate="laflamme">Not yet detailed for this race.</td>
           </tr>
           <tr>
             <th>Immigration</th>
@@ -523,6 +604,7 @@
             <td data-candidate="wood">Not a signature issue so far.</td>
             <td data-candidate="costello">Not a signature issue so far.</td>
             <td data-candidate="loud">Not a signature issue so far.</td>
+            <td data-candidate="laflamme">Not a signature issue so far.</td>
           </tr>
           <tr>
             <th>Democracy / ethics reform</th>
@@ -534,6 +616,7 @@
             <td data-candidate="wood">Overturn Citizens United, ban stock trading by members of Congress, Supreme Court term limits, ban corporate PAC/lobbyist money.</td>
             <td data-candidate="costello">End the filibuster, end gerrymandering, 24-year term limits for Congress and federal judges, abolish the Electoral College, campaign finance reform.</td>
             <td data-candidate="loud">No corporate PAC money; small-dollar funding model.</td>
+            <td data-candidate="laflamme">Endorsed by Citizens' Impeachment, focused on accountability for the Trump administration; not a core platform pillar otherwise.</td>
           </tr>
           <tr>
             <th>Climate / energy</th>
@@ -545,6 +628,7 @@
             <td data-candidate="wood">Not yet detailed.</td>
             <td data-candidate="costello">Directed climate-focused work at Maryland's environment department and the Natural Resources Council of Maine; wants an aggressive science-based national climate plan.</td>
             <td data-candidate="loud">Not a standalone platform pillar; touches food/land systems via food security plank.</td>
+            <td data-candidate="laflamme">Not a signature issue so far.</td>
           </tr>
           <tr>
             <th>Foreign policy (Israel/Gaza)</th>
@@ -556,6 +640,7 @@
             <td data-candidate="wood">Says Israel has committed war crimes but stops short of "genocide," citing concern about the term's link to rising antisemitism; supports restricting offensive weapons sales with conditions and won't take AIPAC money.</td>
             <td data-candidate="costello">Says Israel had "a right and an obligation" to respond to Oct. 7 but calls the scale of its military response "indefensible"; would have opposed offensive weapons sales, supports a two-state solution, and says the U.S. should back Israel's political opposition to Netanyahu.</td>
             <td data-candidate="loud">Human-rights framing; names Palestine, Iran, Ukraine, Venezuela, Greenland specifically; opposes militarism.</td>
+            <td data-candidate="laflamme">Not a signature issue so far.</td>
           </tr>
           <tr>
             <th>Abortion / LGBTQ+ rights</th>
@@ -567,6 +652,7 @@
             <td data-candidate="wood">No notable abortion record; would be Maine's first openly gay senator.</td>
             <td data-candidate="costello">Platform includes a dedicated plank on reproductive rights; no detailed record otherwise.</td>
             <td data-candidate="loud">No specific platform language on either issue yet.</td>
+            <td data-candidate="laflamme">Reproductive rights is her signature issue: restore Title X funding, oppose the domestic gag rule, pass right-to-contraception legislation; youngest-ever board president of the Mabel Wadsworth Center, a Bangor reproductive health clinic.</td>
           </tr>
         </tbody>
       </table>
@@ -577,7 +663,7 @@
 
 <footer>
   <div class="wrap">
-    <p><b>Sourcing:</b> Built from candidates' own campaign sites, recent gubernatorial-run platforms, voting/business records, and reporting current as of July 10, 2026 (Bangor Daily News, CNN, CBS News, WBUR, The Hill, Maine Morning Star, and others).</p>
+    <p><b>Sourcing:</b> Built from candidates' own campaign sites, recent gubernatorial-run platforms, voting/business records, and reporting current as of July 11, 2026 (Bangor Daily News, WABI, WGME, Politico, Wikipedia, and Maine Democratic Party materials).</p>
     <p>This is an informational summary, not an endorsement of any candidate.</p>
   </div>
 </footer>
@@ -641,3 +727,4 @@
 
 </body>
 </html>
+Displaying senate-page-v3.txt.
